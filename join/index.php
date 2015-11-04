@@ -71,20 +71,35 @@ if(!empty($_POST)){
 <form action="" method="post" enctype="multipart/form-data"> 
 	<!--  //ファイル指定のときは【enctype="multipart/form-data">】を入れること！忘れないように！ -->
 	<dl>
+		
+
 		<dt>ニックネーム<span class="required">必須</span></dt>
 		<dd>
-			<input type="text" name="name" size="35" maxlength="255"/>
-			<?php if (isset($error['name'])&&($error['name']=='blank')):?>
+			<input type="text" name="name" size="35" maxlength="255"value="<?php echo htmlspecialchars($_POST['name'],ENT_QUOTES,'UTF-8'); ?>"/>
+			 <?php if (isset($error['name'])&&($error['name']=='blank')):?>
 			<p class="error">*ニックネームを入力してください。</p>
-		<?php endif;?>
+			<?php endif;?>
 		</dd>
+		
+
 		<dt>メールアドレス<span class="required">必須</span></dt>
 		<dd>
-			<input type="text" name="email" size="35" maxlength="255"/>
+			<input type="text" name="email" size="35" maxlength="255" value="<?php echo htmlspecialchars($_POST['email'],ENT_QUOTES,'UTF-8'); ?>"/>
+			<?php if (isset($error['email'])&&($error['email']=='blank')):?>
+			<p class="error">*メールアドレスを入力してください。</p>
+			<?php endif;?>
 		</dd>
+		
+
 		<dt>パスワード<span class="required">必須</span></dt>
 		<dd>
-			<input type="password" name="password" size="10" maxlength="20"/>
+			<input type="password" name="password" size="10" maxlength="20" value="<?php echo htmlspecialchars($_POST['password'],ENT_QUOTES,'UTF-8'); ?>"/>
+			 <?php if (isset($error['password'])&&($error['password']=='blank')):?>
+			 <p class="error">*パスワードを入力してください。</p>
+			  <?php endif;?>
+			  <?php if (isset($error['password'])&&($error['password']=='length')):?>
+			<p class="error">*パスワードは４文字以上で入力してください。</p>
+		<?php endif;?>
 		</dd>
 		<dt>写真など</dt>
 		<dd>
